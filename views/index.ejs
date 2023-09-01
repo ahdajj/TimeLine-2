@@ -1,0 +1,32 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+   
+  <div class="create-blog content">
+
+    <form action="/" method="post">
+      <label for="title">User Name :</label>
+      <input type="text" id="title" name="title" required>
+      <label for="body">Post Message :</label>
+      <textarea id="body" name="body" required></textarea>
+      <button>Post a Message</button>     
+    </form>
+
+  </div>
+
+  <% if (posts.length > 0) { %>
+    <% posts.forEach(pst => { %>
+
+      <h5 class="title"><%= pst.title %>   <%=pst.created_at%> </h5>
+      <p class="snippet"><%= pst.body %></p>
+      <a href="/comment">comment</a>
+
+    <% }) %>
+  <% } else { %>
+    <p>There are no blogs to display...</p>
+  <% } %>
+  
+</body>
+</html>
